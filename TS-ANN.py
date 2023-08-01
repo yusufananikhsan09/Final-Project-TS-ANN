@@ -71,7 +71,9 @@ for i in range(numdata):
 def predict_disp(TRAIN, TRAIN_TARGET, PREDICT, EPOCH):
     tf.keras.backend.clear_session()
     inpShape = TRAIN.shape[1]
-    model = Sequential([Dense(50, input_shape=[inpShape], activation = 'relu'),
+    model = Sequential([Dense(150, input_shape=[inpShape], activation = 'relu'),
+                        Dense(100, activation='relu'),
+                        Dense(50, activation='relu'),
                         Dense(30, activation='relu'),
                         Dense(10, activation='relu'),
                         Dense(1)
