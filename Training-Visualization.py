@@ -32,7 +32,8 @@ plt.legend()
 plt.xlim()
 
 # ================================================================================
-# Menyimpan Data
+## Melakukan transformasi dimensi dari prediksi menjadi dimensi raster (waktu, kolom, baris, (depth/value))
+## Namun, untuk itu ditransformasikan terlebih dahulu menjadi berurutan sesuai indeks_piksel
 data_pred = np.zeros((jumlah_epoch*numdata, 1))
 for x in range(jumlah_epoch):
     for y in range(numdata):
@@ -45,6 +46,8 @@ width = 68
 height = 62
 img = np.zeros((jumlah_epoch,height,width))
 
+
+## kemudian, ditransfromasikan ke dimensi raster
 for k in range(jumlah_epoch):
     for j in range(height):
         for i in range(width):
