@@ -11,22 +11,23 @@ import glob
 
 # =================================================================================
 # Input Data dan Proses Normalisasi 
-""" ## Data yang digunakan dalam format .npy
-df = np.load(r'D:\STUDI\Tugas Akhir\DATASET\PengolahanML\NEWDATA_BGT\MLDisp_3.npy')
-tahun_latih = 5
-jumlah_epoch = 30
-tm_ac = tahun_latih*jumlah_epoch
-numdata = 4216
 
-## Melakukan transformasi dimensi dari gambar menjadi berurutan berdasarkan indeks raster
-data = np.zeros((tahun_latih*jumlah_epoch*numdata,1))
-for k in range(tm_ac):
-    for j in range(62):
-        for i in range(68):
-            if j>0:
-                data[i+j+k*numdata+j*67,] = df[k,j,i]
-            else:
-                data[i+j+k*numdata,] = df[k,j,i] """
+## Data yang digunakan dalam format .npy
+# df = np.load(r'D:\STUDI\Tugas Akhir\DATASET\PengolahanML\NEWDATA_BGT\MLDisp_3.npy')
+# tahun_latih = 5
+# jumlah_epoch = 30
+# tm_ac = tahun_latih*jumlah_epoch
+# numdata = 4216
+
+### Melakukan transformasi dimensi dari gambar menjadi berurutan berdasarkan indeks raster
+#data = np.zeros((tahun_latih*jumlah_epoch*numdata,1))
+#for k in range(tm_ac):
+#    for j in range(62):
+#        for i in range(68):
+#            if j>0:
+#                data[i+j+k*numdata+j*67,] = df[k,j,i]
+#            else:
+#                data[i+j+k*numdata,] = df[k,j,i] 
 
 ## Data yang digunakan adalah format csv
 df = pd.read_csv(r"D:\STUDI\Tugas Akhir\DATASET\PengolahanML\NEWDATA_BGT\MergeML_v3.csv")
