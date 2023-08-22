@@ -18,18 +18,28 @@ time = pd.read_csv(r"D:\STUDI\Tugas Akhir\DATASET\PengolahanML\timedf.csv",
 time = time.copy()
 pred = pd.DataFrame(predicted[id_pt,:,], columns = ['Disp'])
 datalatih = pd.DataFrame(array[:150], columns=['Disp'])
-pred = pred[30:]
+pred = pred[60:]
 Disp = pd.concat([datalatih, pred], axis=0).reset_index()
-graf = time.join(datalatih)
+graf = time.join(Disp)
 
 f, ax = plt.subplots()
-ax.plot(graf.new_waktu[120:150], datalatih[120:], label='Data Displacement')
-ax.plot(graf.new_waktu[120:], pred, label='Data Predicted Displacement')
-ax.set(xlabel='Date', ylabel='Displacement', title=f'Visualisasi Displacement pada Titik 1207')
+ax.plot(graf.new_waktu[120:150], 
+        graf.Disp[120:150], 
+        label='Displacement', zorder=2)
+ax.plot(graf.new_waktu[120:], 
+        graf.Disp[120:], 
+        label='Predicted Displacement', zorder=1)
+ax.set(xlabel='Date', 
+        ylabel='Displacement (mm)', 
+        title=f'Displacement Trend on Point D')
 plt.xticks(rotation ='vertical')
 plt.subplots_adjust(bottom=0.1)
-plt.legend()
+ax.axvline(x = graf.new_waktu.loc[149], 
+          linestyle='--', color='r')
+plt.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left')
 plt.xlim()
+plt.show()
+plt.tight_layout()
 
 # ================================================================================
 ## Melakukan transformasi dimensi dari prediksi menjadi dimensi raster (waktu, kolom, baris, (depth/value))
